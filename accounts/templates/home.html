@@ -1,0 +1,10 @@
+{% if user.is_authenticated %}
+  <h1>Bem-vindo, {{ user.username }}!</h1>
+  <form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Sair (Logout)</button>
+  </form>
+{% else %}
+  <h1>Você não está logado</h1>
+  <a href="{% url 'login' %}">Fazer Login</a>
+{% endif %}
